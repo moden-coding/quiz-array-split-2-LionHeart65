@@ -24,30 +24,48 @@
 */
 
 public class App {
-    public static void main(String[] args)  {
-        //firstTwoSum example
-        System.out.println("With input [1, 2, 3], you should get: 3. You got: " + firstTwoSum(new int[]{1,2,3}));
-        System.out.println("With input [5, 6, 9, 2], you should get: 11. You got: " + firstTwoSum(new int[]{1,2,3}));
-        System.out.println("With input [7], you should get: 7. You got: " + firstTwoSum(new int[]{7}));
-        System.out.println("With input [], you should get: 0. You got: " + firstTwoSum(new int[]{}));
-        
-        //minWordLength example
-        System.out.println("With input \"Java is fun\" you should return 2. You got: " + minWordLength("Java is fun"));
-        System.out.println("With input \"Java isn't scary\" you should return 4. You got: " + minWordLength("Java isn't scary"));
-        System.out.println("With input \"I can do this\" you should return 1. You got: " + minWordLength("I can do this"));
+    public static void main(String[] args) {
+        // firstTwoSum example
+        System.out.println("With input [1, 2, 3], you should get: 3. You got: " + firstTwoSum(new int[] { 1, 2, 3 }));
+        System.out.println("With input [5, 6, 9, 2], you should get: 11. You got: " + firstTwoSum(new int[] { 5,6,9,1 }));
+        System.out.println("With input [7], you should get: 7. You got: " + firstTwoSum(new int[] { 7 }));
+        System.out.println("With input [], you should get: 0. You got: " + firstTwoSum(new int[] {}));
 
-        
+        System.out.println("should return 1. You got: " + minWordLength("The Man was there a while ago"));
+        System.out.println(" you should get: 6. You got: " + firstTwoSum(new int[] {3,3, 1, 2, 3 }));
+
+
+        // minWordLength example/
+        System.out.println("With input \"Java is fun\" you should return 2. You got: " + minWordLength("Java is fun"));
+        System.out.println(
+                "With input \"Java isn't scary\" you should return 4. You got: " + minWordLength("Java isn't scary"));
+        System.out.println(
+                "With input \"I can do this\" you should return 1. You got: " + minWordLength("I can do this"));
+
     }
 
     public static int firstTwoSum(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        } else if (nums.length == 1) {
+            return nums[0];
+        }
 
-        return -1; //this is a placeholder
+        return nums[0] + nums[1];
 
     }
 
-    public static int minWordLength(String sentence){
+    public static int minWordLength(String sentence) {
+        String[] pieces = sentence.split(" ");
 
+        int shortest = 999;
 
-        return -1; //this is a placeholder
+        for (int i = 0; i < pieces.length; i++) {
+            int wordLength = pieces[i].split("").length;
+            if (shortest > wordLength) {
+                shortest = wordLength;
+            }
+        }
+        return shortest;
     }
 }
